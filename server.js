@@ -1,11 +1,13 @@
 import express from 'express';
 import { PrismaClient } from '@prisma/client';
 import { Prisma } from '@prisma/client';
+import cors from 'cors'; //biblioteca para permitir requisições de outras origens (front-end)
 
 const prisma = new PrismaClient();
 
 const app = express();
 app.use(express.json());
+app.use(cors());  //chamada do cors para permitir requisições de outras origens (front-end)
 
 app.post('/users', async (req, res) => {
 
